@@ -1,7 +1,7 @@
 const convertTime = (createdAt) => {
   let createdDate = new Date(createdAt);
 
-  let dateString = _formatTime(Date.parse(createdDate)).toString() + " ago";
+  let dateString = _formatTime(Date.parse(createdDate)).toString();
 
   return dateString;
 };
