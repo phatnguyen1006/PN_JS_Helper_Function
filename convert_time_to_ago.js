@@ -2,7 +2,7 @@ const convertTime = (createdAt) => {
   let createdDate = new Date(createdAt);
   let date = _formatTime(Date.parse(createdDate)).toString();
 
-  let dateString = `${date} ${date === "Just now" ? "" : "ago"}`;
+  let dateString = `${date}${date === "Just now" ? "" : " ago"}`;
 
   return dateString;
 };
