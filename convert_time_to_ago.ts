@@ -7,7 +7,7 @@ const convertTime = (createdAt: Date): string => {
   return dateString;
 };
 
-function _formatTime(timeCreated: number) {
+function _formatTime(timeCreated: number): string {
   var periods = {
     month: 30 * 24 * 60 * 60 * 1000,
     week: 7 * 24 * 60 * 60 * 1000,
