@@ -7,11 +7,11 @@ export function timeSince(timeStamp: any) {
     return "Invalid date";
   }
 
-  var now: any = new Date(),
+  var now = new Date(),
     secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
 
-  var formatDate = function (date, format, utc) {
-    var MMMM: string[] = [
+  var formatDate = function (date: any, format: string, utc?: string) {
+    var MMMM = [
       "\x00",
       "Tháng một",
       "Tháng hai",
@@ -26,7 +26,7 @@ export function timeSince(timeStamp: any) {
       "Tháng mười một",
       "Tháng mười hai",
     ];
-    var MMM: string[] = [
+    var MMM = [
       "\x01",
       "Th.1",
       "Th.2",
@@ -41,7 +41,7 @@ export function timeSince(timeStamp: any) {
       "Th.11",
       "Th.12",
     ];
-    var dddd: string[] = [
+    var dddd = [
       "\x02",
       "Chủ nhật",
       "Thứ hai",
@@ -51,9 +51,9 @@ export function timeSince(timeStamp: any) {
       "Thứ 6",
       "Thứ 7",
     ];
-    var ddd: string[] = ["\x03", "CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+    var ddd = ["\x03", "CN", "T2", "T3", "T4", "T5", "T6", "T7"];
 
-    function ii(i, len) {
+    function ii(i: number, len?: number) {
       var s = i + "";
       len = len || 2;
       while (s.length < len) s = "0" + s;
@@ -65,7 +65,7 @@ export function timeSince(timeStamp: any) {
     format = format.replace(/(^|[^\\])yy/g, "$1" + y.toString().substr(2, 2));
     format = format.replace(/(^|[^\\])y/g, "$1" + y);
 
-    var M = (utc ? date.getUTCMonth() : date.getMonth()) + 1;
+    var M:number = (utc ? date.getUTCMonth() : date.getMonth()) + 1;
     format = format.replace(/(^|[^\\])MMMM+/g, "$1" + MMMM[0]);
     format = format.replace(/(^|[^\\])MMM/g, "$1" + MMM[0]);
     format = format.replace(/(^|[^\\])MM/g, "$1" + ii(M));
@@ -136,15 +136,15 @@ export function timeSince(timeStamp: any) {
   }
   if (secondsPast < 60) {
     // Less than a minute
-    return parseInt(secondsPast) + " giây trước";
+    return parseInt(secondsPast.toString()) + " giây trước";
   }
   if (secondsPast < 3600) {
     // Less than an hour
-    return parseInt(secondsPast / 60) + " phút trước";
+    return parseInt((secondsPast / 60).toString()) + " phút trước";
   }
   if (secondsPast <= 86400) {
     // Less than a day
-    return parseInt(secondsPast / 3600) + " giờ trước";
+    return parseInt((secondsPast / 3600).toString()) + " giờ trước";
   }
   if (secondsPast <= 172800) {
     // Less than 2 days
