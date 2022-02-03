@@ -60,40 +60,40 @@ export function timeSince(timeStamp: any) {
       return s;
     }
 
-    var y = utc ? date.getUTCFullYear() : date.getFullYear();
+    var y: number = utc ? date.getUTCFullYear() : date.getFullYear();
     format = format.replace(/(^|[^\\])yyyy+/g, "$1" + y);
     format = format.replace(/(^|[^\\])yy/g, "$1" + y.toString().substr(2, 2));
     format = format.replace(/(^|[^\\])y/g, "$1" + y);
 
-    var M:number = (utc ? date.getUTCMonth() : date.getMonth()) + 1;
+    var M: number = (utc ? date.getUTCMonth() : date.getMonth()) + 1;
     format = format.replace(/(^|[^\\])MMMM+/g, "$1" + MMMM[0]);
     format = format.replace(/(^|[^\\])MMM/g, "$1" + MMM[0]);
     format = format.replace(/(^|[^\\])MM/g, "$1" + ii(M));
     format = format.replace(/(^|[^\\])M/g, "$1" + M);
 
-    var d = utc ? date.getUTCDate() : date.getDate();
+    var d: number = utc ? date.getUTCDate() : date.getDate();
     format = format.replace(/(^|[^\\])dddd+/g, "$1" + dddd[0]);
     format = format.replace(/(^|[^\\])ddd/g, "$1" + ddd[0]);
     format = format.replace(/(^|[^\\])dd/g, "$1" + ii(d));
     format = format.replace(/(^|[^\\])d/g, "$1" + d);
 
-    var H = utc ? date.getUTCHours() : date.getHours();
+    var H: number = utc ? date.getUTCHours() : date.getHours();
     format = format.replace(/(^|[^\\])HH+/g, "$1" + ii(H));
     format = format.replace(/(^|[^\\])H/g, "$1" + H);
 
-    var h = H > 12 ? H - 12 : H == 0 ? 12 : H;
+    var h: number = H > 12 ? H - 12 : H == 0 ? 12 : H;
     format = format.replace(/(^|[^\\])hh+/g, "$1" + ii(h));
     format = format.replace(/(^|[^\\])h/g, "$1" + h);
 
-    var m = utc ? date.getUTCMinutes() : date.getMinutes();
+    var m: number = utc ? date.getUTCMinutes() : date.getMinutes();
     format = format.replace(/(^|[^\\])mm+/g, "$1" + ii(m));
     format = format.replace(/(^|[^\\])m/g, "$1" + m);
 
-    var s = utc ? date.getUTCSeconds() : date.getSeconds();
+    var s: number = utc ? date.getUTCSeconds() : date.getSeconds();
     format = format.replace(/(^|[^\\])ss+/g, "$1" + ii(s));
     format = format.replace(/(^|[^\\])s/g, "$1" + s);
 
-    var f = utc ? date.getUTCMilliseconds() : date.getMilliseconds();
+    var f: number = utc ? date.getUTCMilliseconds() : date.getMilliseconds();
     format = format.replace(/(^|[^\\])fff+/g, "$1" + ii(f, 3));
     f = Math.round(f / 10);
     format = format.replace(/(^|[^\\])ff/g, "$1" + ii(f));
