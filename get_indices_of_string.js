@@ -38,3 +38,18 @@ while(indexOccurence >= 0) {
 
     indexOccurence = str.indexOf(searchKeyword, indexOccurence + 1);
 }
+
+// function version
+function getIndicesOf(searchKeyword, str) {
+    var startingIndices = [];
+
+    var indexOccurence = str.indexOf(searchKeyword, 0);
+
+    while(indexOccurence >= 0) {
+        startingIndices.push(indexOccurence);
+
+        indexOccurence = str.indexOf(searchKeyword, indexOccurence + 1);
+    }
+    
+    return startingIndices;
+}
